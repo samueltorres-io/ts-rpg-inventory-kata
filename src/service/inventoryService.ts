@@ -58,7 +58,10 @@ export class InventoryService {
             if (item) currentWeight += (item.weight * parseInt(currentAmount, 10));
             
             /* Monta quantos slots foram utilizados de acordo com a quantidade de items / pelo valor máximo por stack */
-            slots += currentAmount / item!.maxStack;
+            let aux = currentAmount / item!.maxStack; // 1.40
+            const valor = int(aux); // 1
+            const resto = valo - aux; // 0.40
+            slots += resto != 0 ? valor + 1 : valor; // <-- 2 slots
             if (slots >= userInventory.slots) return new Error("Backpack without Slot Spaces");
 
         }
