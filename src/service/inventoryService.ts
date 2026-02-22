@@ -16,4 +16,12 @@ export class InventoryService {
         return this.inventoryRepository.setInventory(user.id, inventory);
     }
 
+    /* Busca o inventário do usuário */
+    public getInventory(user: User) {
+        if (!this.userRepository.getUser(user.id)) {
+            return new Error("User nor found");
+        }
+        return this.inventoryRepository.getInventory(user.id);
+    }
+
 }
