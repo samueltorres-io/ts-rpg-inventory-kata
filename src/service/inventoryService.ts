@@ -54,6 +54,7 @@ export class InventoryService {
             const item = this.itemRepository.getItem(currentId);
             if (item) currentWeight += (item.weight * parseInt(currentAmount, 10));
         }
+        if (currentWeight >= userInventory.weight) return new Error(`Backack without Space: ${userInventory.weight} | ${currentWeight}`);
 
         /**
          * Com o userInvntory, iremos validar quantos slots ele 
