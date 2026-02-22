@@ -50,11 +50,19 @@ export class InventoryService {
 
         /* 1 - Calculo do peso */
         let currentWeight: number = 0;
+        let slots: number = 0;
         for (let [currentId, currentAmount] of userInventory!.items.entries()) {
+
+            /* Busca items e peso */
             const item = this.itemRepository.getItem(currentId);
             if (item) currentWeight += (item.weight * parseInt(currentAmount, 10));
+            
+            /* Monta quantos slots foram utilizados de acordo com a quantidade de items / pelo valor máximo por stack */
+            slots += currentAmount / item!.maxStack;
+            if (slots >= userInventory.slots) return new Error("Backpack without Slot Spaces");
+
         }
-        if (currentWeight >= userInventory.weight) return new Error(`Backack without Space: ${userInventory.weight} | ${currentWeight}`);
+        if (currentWeight >= userInventory.weight) return new Error(`The backpack is heavy: ${userInventory.weight} | ${currentWeight}`);
 
         /**
          * Com o userInvntory, iremos validar quantos slots ele 
