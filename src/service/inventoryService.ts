@@ -48,7 +48,7 @@ export class InventoryService {
         const userInventory = this.getInventory(user);
         if (!userInventory) return null;
 
-        /* 1 - Calculo do peso */
+        /* 1 - Calculo do peso e stacks */
         let currentWeight: number = 0;
         let slots: number = 0;
         for (let [currentId, currentAmount] of userInventory!.items.entries()) {
