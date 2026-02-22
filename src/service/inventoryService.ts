@@ -24,4 +24,13 @@ export class InventoryService {
         return this.inventoryRepository.getInventory(user.id);
     }
 
+    /* Deleta o inventário do usuário */
+    public delete(user: User, inventory: Inventory) {
+        if (!this.userRepository.getUser(user.id)) {
+            return new Error("User not found");
+        }
+        /* Vai que user tem mais de um inventário.... excluimos apenas o inventário exato do user */
+        return this.inventoryRepository.deleteInventory(user.id, inventory);
+    }
+
 }
