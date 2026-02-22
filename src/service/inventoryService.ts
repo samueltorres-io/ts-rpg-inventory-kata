@@ -59,7 +59,7 @@ export class InventoryService {
             /* Não validamos peso máximo dos itens que já estão na mochila */
             
             /* Monta quantos slots foram utilizados */
-            slots += Math.ceil((currentAmount + itemV == item ? 1 : 0) / itemV!.maxStack);
+            slots += Math.ceil((currentAmount + itemV?.id == item.id ? 1 : 0) / itemV!.maxStack);
             if (slots + 1 >= userInventory.slots) return new Error("Backpack without Slot Spaces");
 
         }
