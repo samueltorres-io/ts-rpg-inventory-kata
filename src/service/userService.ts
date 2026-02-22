@@ -34,4 +34,9 @@ export class UserService {
         return this.userRepository.getUser(userId);
     }
 
+    /* Delete espera o obj user, já que para deletar, devemos saber exatamente quem é o user via get */
+    public delete(user: User) {
+        return this.userRepository.deleteUser(user.id);
+    }
+
 }
