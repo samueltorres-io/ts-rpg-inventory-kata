@@ -61,8 +61,6 @@ export class InventoryService {
             slots += Math.ceil(currentAmount / item!.maxStack);
             if (slots >= userInventory.slots) return new Error("Backpack without Slot Spaces");
 
-            slots += Math.ceil(currentAmount / item!.maxStack);
-
         }
         if (currentWeight >= userInventory.weight) return new Error(`The backpack is heavy: ${userInventory.weight} | ${currentWeight}`);
 
