@@ -46,6 +46,14 @@ export class InventoryService {
         }
         
         const userInventory = this.getInventory(user);
+        if (!userInventory) return null;
+
+        /* 1 - Calculo do peso */
+        let currentWeight: number = 0;
+        for (let [currentId, currentAmount] of userInventory!.items.entries()) {
+            const item = this.itemRepository.getItem(currentId);
+            if (item) currentWeight += (item.weight * parseInt(currentAmount, 10));
+        }
 
         /**
          * Com o userInvntory, iremos validar quantos slots ele 
