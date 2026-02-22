@@ -3,6 +3,6 @@ import { User } from '../entity/User';
 
 export class InventoryRepository {
 
-    private inventories = new Map<User, Inventory>();
+    private inventories = new Map<number, Inventory>();
 
 }
