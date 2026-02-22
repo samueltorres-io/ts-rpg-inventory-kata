@@ -54,15 +54,18 @@ export class InventoryService {
         for (let [currentId, currentAmount] of userInventory!.items.entries()) {
 
             /* Busca items e peso */
-            const item = this.itemRepository.getItem(currentId);
-            if (item) currentWeight += (item.weight * parseInt(currentAmount, 10));
+            const itemV = this.itemRepository.getItem(currentId);
+            if (itemV) currentWeight += (itemV.weight * parseInt(currentAmount, 10));
+            /* Não validamos peso máximo dos itens que já estão na mochila */
             
             /* Monta quantos slots foram utilizados */
-            slots += Math.ceil(currentAmount / item!.maxStack);
-            if (slots >= userInventory.slots) return new Error("Backpack without Slot Spaces");
+            slots += Math.ceil((currentAmount + itemV == item ? 1 : 0) / itemV!.maxStack);
+            if (slots + 1 >= userInventory.slots) return new Error("Backpack without Slot Spaces");
 
         }
-        if (currentWeight >= userInventory.weight) return new Error(`The backpack is heavy: ${userInventory.weight} | ${currentWeight}`);
+
+        /* 2 - Validação do novo item e inserção */
+        if ((currentWeight + item.weight) > userInventory.weight) return new Error("The backpack is heavy");
 
         /**
          * Com o userInvntory, iremos validar quantos slots ele 
