@@ -4,4 +4,5 @@ export class Item {
     type: object;
     durability: number;
     weight: number;
+    maxStack: number;
 }
