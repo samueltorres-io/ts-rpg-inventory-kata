@@ -12,6 +12,8 @@ export class UserRepository {
         return this.users.get(userId);
     }
 
-    
+    public deleteUser(userId: number) {
+        return this.users.delete(userId);
+    }
 
 }
