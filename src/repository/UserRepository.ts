@@ -8,6 +8,10 @@ export class UserRepository {
         return this.users.set(user.id, user);
     }
 
+    public getUser(userId: number) {
+        return this.users.get(userId);
+    }
+
     
 
 }
