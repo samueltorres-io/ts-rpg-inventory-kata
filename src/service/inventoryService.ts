@@ -88,7 +88,8 @@ export class InventoryService {
         /* 3 - Adição do item */
         userInventory.items.set(item.id, currentAmount + 1);
         if (this.inventoryRepository.setInventory(user.id, userInventory)) {
-            return this.getInventory(user);
+            return userInventory; /* <-- Banco em memória, já atualiza o valor e retorna o valor novo na memoria */
+            // return this.getInventory(user); <-- Forma certa no uso de db
         }
         return;
     }
