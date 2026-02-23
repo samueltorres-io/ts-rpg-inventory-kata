@@ -66,4 +66,10 @@ describe("Tests for User Inventory and Items", () => {
         /* Passo 3 já é testado dentro do 'toBe' do 'expect' de adicionar um novo item */
     });
 
+    test("Getting inventory of a unexist User", () => {
+        const invalidUser = user;
+        invalidUser.id = 3456;
+        expect(inventoryService.getInventory(invalidUser)).toEqual(new Error("User nor found"));
+    });
+
 });
