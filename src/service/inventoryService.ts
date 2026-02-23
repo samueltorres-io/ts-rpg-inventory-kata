@@ -1,9 +1,9 @@
-import { User } from "../entity/User";
-import { Inventory } from "../entity/Inventory";
-import { Item } from '../entity/Item';
-import { InventoryRepository } from '../repository/InventoryRepository';
-import { UserRepository } from '../repository/UserRepository';
-import { ItemRepository } from '../repository/ItemRepository';
+import { User } from "../entity/User.js";
+import { Inventory } from "../entity/Inventory.js";
+import { Item } from '../entity/Item.js';
+import { InventoryRepository } from '../repository/InventoryRepository.js';
+import { UserRepository } from '../repository/UserRepository.js';
+import { ItemRepository } from '../repository/ItemRepository.js';
 
 export class InventoryService {
 
