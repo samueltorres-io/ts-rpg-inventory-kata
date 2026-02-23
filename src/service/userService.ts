@@ -3,7 +3,7 @@ import { UserRepository } from '../repository/UserRepository.js';
 
 export class UserService {
 
-    private userRepository: UserRepository;
+    constructor(private userRepository: UserRepository) {};
 
     public create(name: string) {
 
@@ -14,15 +14,14 @@ export class UserService {
             const randomStr = Math
                 .random()
                 .toString(8)
-                .substring(2, 8)
+                .substring(2, 8);
 
-            if (this.userRepository.getUser(parseInt(randomStr, 10))) {
-                id = parseInt(randomStr, 10);
+            const generatedId = parseInt(randomStr, 10);
+
+            if (!this.userRepository.getUser(generatedId)) {
+                id = generatedId;
                 break;
             }
-
-            continue;
-
         }
         
         const user = new User(id, name);
