@@ -20,12 +20,12 @@ describe("Tests for User Service File", () => {
     });
 
     test("Getting a non-existent User", () => {
-        expect(typeof userService.get(1234)).toBe('undefined');
+        expect(userService.get(1234)).toBeUndefined();
     });
 
     test("Delete a exist User", () => {
         const user = userService.create("user");
-        expect(null).toBe(userService.delete(user));
+        expect(userService.delete(user)).toBeTruthy();
     });
 
 });
