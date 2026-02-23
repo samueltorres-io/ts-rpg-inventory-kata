@@ -26,7 +26,9 @@ export class UserService {
         
         const user = new User(id, name);
 
-        return this.userRepository.setUser(user);
+        this.userRepository.setUser(user);
+
+        return user;
     }
 
     public get(userId: number) {
