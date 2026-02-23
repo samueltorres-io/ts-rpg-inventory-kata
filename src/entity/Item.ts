@@ -1,7 +1,7 @@
 export class Item {
     id: number;
     name: string;
-    type: object;
+    type: string;
     durability: number;
     weight: number;
     maxStack: number;
@@ -9,7 +9,7 @@ export class Item {
     constructor(
         id: number,
         name: string,
-        type: object,
+        type: string,
         durability: number,
         weight: number,
         maxStack: number

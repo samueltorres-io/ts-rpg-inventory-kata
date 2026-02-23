@@ -6,7 +6,7 @@ export class Weapon extends Item {
     constructor(
         id: number,
         name: string,
-        type: object,
+        type: string,
         durability: number,
         weight: number,
         maxStack: number,
