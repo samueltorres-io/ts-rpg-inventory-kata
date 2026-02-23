@@ -13,7 +13,7 @@ export class InventoryRepository {
         return inventory;
     }
 
-    public deleteInventory(userId: number, inventory: Inventory) {
+    public deleteInventory(userId: number) {
         return this.inventories.delete(userId);
     }
 
