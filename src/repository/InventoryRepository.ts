@@ -1,4 +1,4 @@
-import { Inventory } from '../entity/Inventory';
+import { Inventory } from '../entity/Inventory.js';
 
 export class InventoryRepository {
 
