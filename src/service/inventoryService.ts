@@ -18,7 +18,10 @@ export class InventoryService {
         if (!this.userRepository.getUser(user.id)) {
             return new Error("User not found");
         }
-        return this.inventoryRepository.setInventory(user.id, inventory);
+
+        this.inventoryRepository.setInventory(user.id, inventory);
+
+        return inventory;
     }
 
     /* Busca o inventário do usuário */
@@ -48,7 +51,7 @@ export class InventoryService {
         }
         
         const userInventory = this.getInventory(user);
-        if (userInventory instanceof Error ) return userInventory; /* <-- error */
+        if (userInventory instanceof Error || userInventory?.items == null ) return userInventory; /* <-- error */
         if (userInventory === undefined) return new Error("User Inventory not found");
 
         /* 1 - Calculo do peso e stacks */
