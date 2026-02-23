@@ -12,7 +12,7 @@ export class Armor extends Item {
         maxStack: number,
         protection: number
     ) {
-        super(id, name, type, durability, weight, maxStack),
+        super(id, name, type, durability, weight, maxStack);
         this.protection = protection;
     }
 }

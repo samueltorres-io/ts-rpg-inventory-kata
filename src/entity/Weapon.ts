@@ -12,7 +12,7 @@ export class Weapon extends Item {
         maxStack: number,
         attack: number
     ) {
-        super(id, name, type, durability, weight, maxStack),
+        super(id, name, type, durability, weight, maxStack);
         this.attack = attack;
     }
 }
