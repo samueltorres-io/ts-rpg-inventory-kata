@@ -79,8 +79,12 @@ export class InventoryService {
             return new Error("Backpack without Slot Spaces");
         }
 
-                
-
+        /* 3 - Adição do item */
+        userInventory.items.set(item.id, currentAmount + 1);
+        if (this.inventoryRepository.setInventory(user.id, userInventory)) {
+            return true;
+        }
+        return false;
     }
 
 }
