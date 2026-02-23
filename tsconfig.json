@@ -10,7 +10,7 @@
     "module": "NodeNext",
     "target": "ES2022",
     "moduleResolution": "NodeNext",
-    "types": [],
+    "types": ["jest", "node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
