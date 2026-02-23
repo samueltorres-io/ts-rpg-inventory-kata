@@ -1,0 +1,26 @@
+{
+  "name": "ts-rpg-inventory-kata",
+  "version": "1.0.0",
+  "description": "Simple RPG Management Inventory for training .ts and Jest!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samueltorres-io/ts-rpg-inventory-kata.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samueltorres-io/ts-rpg-inventory-kata/issues"
+  },
+  "homepage": "https://github.com/samueltorres-io/ts-rpg-inventory-kata#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
+  }
+}
