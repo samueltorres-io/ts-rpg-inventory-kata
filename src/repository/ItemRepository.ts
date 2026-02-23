@@ -5,7 +5,8 @@ export class ItemRepository {
     private items = new Map<number, Item>();
 
     public setItem(itemId: number, item: Item) {
-        return this.items.set(item.id, item);
+        this.items.set(item.id, item);
+        return item;
     }
 
     public getItem(itemId: number) {
