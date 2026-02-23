@@ -1,5 +1,5 @@
-import { User } from '../entity/User';
-import { UserRepository } from '../repository/UserRepository';
+import { User } from '../entity/User.js';
+import { UserRepository } from '../repository/UserRepository.js';
 
 export class UserService {
 
