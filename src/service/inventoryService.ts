@@ -67,36 +67,19 @@ export class InventoryService {
         /* 2 - Validação do novo item e inserção */
         if ((currentWeight + item.weight) > userInventory.weight) return new Error("The backpack is heavy");
 
-        /**
-         * Com o userInvntory, iremos validar quantos slots ele 
-         * tem vazios de acordo com o slots, além de validar se
-         * o user tem peço que não esceda o máximo ermitido e se
-         * o novo item caberia e tem peso o sufucuente para não
-         * vazar isso!
-        */
+        const currentAmount = userInventory.items.get(item.id) || 0;
 
-        /*
-        export class Inventory {
-            slots: number;
-            weight: number;
-            // item ID | amount
-            items: Map<number, number>;
+        const currentSlotsOccupied = Math.ceil(currentAmount / item.maxStack);
+        const newSlotsOccupied = Math.ceil((currentAmount + 1) / item.maxStack);
+
+        /* 0 se couber na stack do item ou 1 se precisar de um novo slot/stack */
+        const additionalSlotsNeeded = newSlotsOccupied - currentSlotsOccupied;
+
+        if ((slots + additionalSlotsNeeded) > userInventory.slots) {
+            return new Error("Backpack without Slot Spaces");
         }
-        */
 
-        /**
-         * Para cada item dentro de items, vamos pegar o amount
-         * e ir somando todos os items para ver se bate sendo 
-         * menor ou igual ao slots, pois cada item:number é
-         * um slot e cada item:id devemos buscar no items pelo
-         * id e verificar o peso dele, então: (busca item -> puxa
-         * peso -> verifica amount -> peso x amount -> salva e vai
-         * para o proximo item)!
-         * 
-         * Ou lidar com item sendo um slot e podendo fazer um stack de items x em um slot com quantidade maxima de items por stack/slot
-         * Tipo, armaduras/armas (Armor/Weapon) não estacam, mas outros items estacam em x vezes.
-        */
-        
+                
 
     }
 
