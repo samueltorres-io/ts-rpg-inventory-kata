@@ -46,7 +46,8 @@ export class InventoryService {
         }
         
         const userInventory = this.getInventory(user);
-        if (!userInventory) return null;
+        if (userInventory instanceof Error ) return userInventory; /* <-- error */
+        if (userInventory === undefined) return new Error("User Inventory not found");
 
         /* 1 - Calculo do peso e stacks */
         let currentWeight: number = 0;
@@ -55,7 +56,7 @@ export class InventoryService {
 
             /* Busca items e peso */
             const currentItem = this.itemRepository.getItem(currentId);
-            if (currentItem) currentWeight += (currentItem.weight * parseInt(currentAmount, 10));
+            if (currentItem) currentWeight += (currentItem.weight * currentAmount);
             /* Não validamos peso máximo dos itens que já estão na mochila */
             
             /* Monta quantos slots foram utilizados */
