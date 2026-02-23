@@ -7,9 +7,11 @@ import { ItemRepository } from '../repository/ItemRepository.js';
 
 export class InventoryService {
 
-    private inventoryRepository: InventoryRepository;
-    private userRepository: UserRepository;
-    private itemRepository: ItemRepository;
+    constructor(
+        private inventoryRepository: InventoryRepository,
+        private userRepository: UserRepository,
+        private itemRepository: ItemRepository
+    ) {};
 
     /* Criar um novo inventario para um user */
     public create(user: User, inventory: Inventory) {
