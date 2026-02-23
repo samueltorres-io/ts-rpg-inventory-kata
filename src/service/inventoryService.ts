@@ -88,9 +88,9 @@ export class InventoryService {
         /* 3 - Adição do item */
         userInventory.items.set(item.id, currentAmount + 1);
         if (this.inventoryRepository.setInventory(user.id, userInventory)) {
-            return true;
+            return this.getInventory(user);
         }
-        return false;
+        return;
     }
 
 }
