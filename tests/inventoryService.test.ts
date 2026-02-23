@@ -72,4 +72,14 @@ describe("Tests for User Inventory and Items", () => {
         expect(inventoryService.getInventory(invalidUser)).toEqual(new Error("User nor found"));
     });
 
+    test("Delete a Invalid User Inventory", () => {
+        const invalidUser = user;
+        invalidUser.id = 3456;
+        expect(inventoryService.delete(invalidUser)).toEqual(new Error("User not found"));
+    });
+
+    test("Delete a Valid User Inventory", () => {
+        expect(inventoryService.delete(user)).toBeTruthy();
+    });
+
 });
