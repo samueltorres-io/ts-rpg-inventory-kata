@@ -54,12 +54,12 @@ export class InventoryService {
         for (let [currentId, currentAmount] of userInventory!.items.entries()) {
 
             /* Busca items e peso */
-            const itemV = this.itemRepository.getItem(currentId);
-            if (itemV) currentWeight += (itemV.weight * parseInt(currentAmount, 10));
+            const currentItem = this.itemRepository.getItem(currentId);
+            if (currentItem) currentWeight += (currentItem.weight * parseInt(currentAmount, 10));
             /* Não validamos peso máximo dos itens que já estão na mochila */
             
             /* Monta quantos slots foram utilizados */
-            slots += Math.ceil((currentAmount + itemV?.id == item.id ? 1 : 0) / itemV!.maxStack);
+            slots += Math.ceil(currentAmount / currentItem!.maxStack);
             if (slots + 1 >= userInventory.slots) return new Error("Backpack without Slot Spaces");
 
         }
