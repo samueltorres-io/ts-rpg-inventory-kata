@@ -9,7 +9,8 @@ export class InventoryRepository {
     }
 
     public setInventory(userId: number, inventory: Inventory) {
-        return this.inventories.set(userId, inventory);
+        this.inventories.set(userId, inventory);
+        return inventory;
     }
 
     public deleteInventory(userId: number, inventory: Inventory) {
