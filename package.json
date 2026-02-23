@@ -2,9 +2,10 @@
   "name": "ts-rpg-inventory-kata",
   "version": "1.0.0",
   "description": "Simple RPG Management Inventory for training .ts and Jest!",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
