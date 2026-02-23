@@ -82,4 +82,36 @@ describe("Tests for User Inventory and Items", () => {
         expect(inventoryService.delete(user)).toBeTruthy();
     });
 
+    test("Stress Test - Exceeding Inventory Slots", () => {
+        const stressUser = userService.create("stressUserSlots");
+        const smallInventory = new Inventory(2, 500, new Map());
+        inventoryService.create(stressUser, smallInventory);
+
+        const item1 = new Armor(10, "Helmet 1", "helmet", 100, 5, 1, 5);
+        const item2 = new Armor(11, "Helmet 2", "helmet", 100, 5, 1, 5);
+        const item3 = new Armor(12, "Helmet 3", "helmet", 100, 5, 1, 5);
+
+        itemRepository.setItem(10, item1);
+        itemRepository.setItem(11, item2);
+        itemRepository.setItem(12, item3);
+
+        inventoryService.addItem(stressUser, item1);
+        inventoryService.addItem(stressUser, item2);
+
+        expect(inventoryService.addItem(stressUser, item3)).toEqual(new Error("Backpack without Slot Spaces"));
+    });
+
+    test("Stress Test - Exceeding Inventory Weight", () => {
+        const stressUser = userService.create("stressUserWeight");
+        const weakInventory = new Inventory(10, 30, new Map());
+        inventoryService.create(stressUser, weakInventory);
+
+        const heavyItem = new Armor(20, "Heavy Chestplate", "chestplate", 100, 20, 1, 15);
+        itemRepository.setItem(20, heavyItem);
+
+        inventoryService.addItem(stressUser, heavyItem);
+
+        expect(inventoryService.addItem(stressUser, heavyItem)).toEqual(new Error("The backpack is heavy"));
+    });
+
 });
